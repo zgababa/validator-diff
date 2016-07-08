@@ -1,0 +1,19 @@
+{
+  "name": "vs-oneof",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --opts .mocha.opts '**/*.spec.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^4.1.5",
+    "bluebird": "^3.4.1",
+    "chai": "^3.5.0",
+    "expect": "^1.20.2",
+    "jsonschema": "^1.0.2",
+    "mocha": "^2.5.3"
+  }
+}
