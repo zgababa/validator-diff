@@ -1,33 +1,32 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "definitions": {
+    "bloca": {
+      "type" : "object",
+      "properties": {
+        "foo": { "type": "string" }
+      },
+      "required": [ "foo" ],
+      "additionalProperties": false
+    },
+    "blocb": {
+      "type" : "object",
+      "properties": {
+        "bar": { "type": "integer" }
+      },
+      "required": [ "bar" ],
+      "additionalProperties": false
+    }
+  },
   "properties": {
     "lines": {
       "type": "array",
-      "default": [],
       "items": {
         "type": "object",
         "oneOf": [
-          {
-            "A": {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "type": "string",
-                  "default": ""
-                }
-              }
-            },
-            "B": {
-              "type": "object",
-              "properties": {
-                "foo": {
-                  "type": "string",
-                  "default": ""
-                }
-              }
-            }
-          }
+          {"$ref": "#/definitions/bloca"},
+          {"$ref": "#/definitions/blocb"}
         ]
       }
     }

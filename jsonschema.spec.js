@@ -9,7 +9,7 @@ const schema = require("./schema.json");
 
 function getReleaseErrors() {
   const ajv = new Ajv({allErrors : true, verbose : true});
-  ajv.validate(schema, release);
+  const t = ajv.validate(schema, release);
   return ajv.errors;
 }
 
@@ -28,8 +28,7 @@ function validateRelease() {
     return Promise.resolve();
   }
 
-  const error = new Error("validation failed");
-  error.json = JSON.stringify(validationErrors.reduce(cleanErrors, []), null, 2);
+  const error = JSON.stringify(validationErrors.reduce(cleanErrors, []), null, 2);
   return Promise.reject(error);
 }
 
@@ -37,8 +36,6 @@ function validateRelease() {
 describe("JSON SCHEMA", () => {
 
   it("Should not have errors", () => {
-    return expect(validateRelease).then((t) => {
-      console.log("<<<<<<", t);
-    });
+    return expect(validateRelease());
   });
 });
